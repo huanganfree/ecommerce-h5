@@ -1,0 +1,17 @@
+{
+  "name": "ecommerce-h5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "dev:frontend": "pnpm --filter frontend dev",
+    "dev:backend": "pnpm --filter backend start:dev",
+    "build:frontend": "pnpm --filter frontend build",
+    "build:backend": "pnpm --filter backend build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
