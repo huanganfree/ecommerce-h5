@@ -1,0 +1,36 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "mysql"  
+}
+
+model order_requests { 
+  id              BigInt   @id @default(autoincrement())
+  user_id         BigInt
+  idempotency_key String   @db.VarChar(64)
+  request_hash    String   @db.Char(64)
+  order_id        BigInt?  @unique(map: "uk_order_id")
+  created_at      DateTime @default(now()) @db.DateTime(0)
+
+  @@unique([user_id, idempotency_key], map: "uk_user_idempotency")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model users {
+  id            BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  username      String?  @db.VarChar(50)
+  phone         String?  @unique(map: "uk_phone") @db.VarChar(20)
+  email         String?  @unique(map: "uk_email") @db.VarChar(100)
+  password_hash String   @db.VarChar(255)
+  nickname      String?  @db.VarChar(50)
+  avatar        String?  @db.VarChar(500)
+  status        Int      @default(1) @db.UnsignedTinyInt
+  created_at    DateTime @default(now()) @db.DateTime(0)
+  updated_at    DateTime @default(now()) @db.DateTime(0)
+
+  @@index([username], map: "idx_username")
+}
