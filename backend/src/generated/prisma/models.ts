@@ -10,4 +10,5 @@
  */
 export type * from './models/order_requests.js'
 export type * from './models/users.js'
+export type * from './models/address.js'
 export type * from './commonInputTypes.js'

@@ -52,7 +52,8 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   order_requests: 'order_requests',
-  users: 'users'
+  users: 'users',
+  address: 'address'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -99,6 +100,23 @@ export const UsersScalarFieldEnum = {
 export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
 
 
+export const AddressScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  receiver_name: 'receiver_name',
+  receiver_phone: 'receiver_phone',
+  province: 'province',
+  city: 'city',
+  district: 'district',
+  detail: 'detail',
+  is_default: 'is_default',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type AddressScalarFieldEnum = (typeof AddressScalarFieldEnum)[keyof typeof AddressScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -133,4 +151,16 @@ export const usersOrderByRelevanceFieldEnum = {
 } as const
 
 export type usersOrderByRelevanceFieldEnum = (typeof usersOrderByRelevanceFieldEnum)[keyof typeof usersOrderByRelevanceFieldEnum]
+
+
+export const addressOrderByRelevanceFieldEnum = {
+  receiver_name: 'receiver_name',
+  receiver_phone: 'receiver_phone',
+  province: 'province',
+  city: 'city',
+  district: 'district',
+  detail: 'detail'
+} as const
+
+export type addressOrderByRelevanceFieldEnum = (typeof addressOrderByRelevanceFieldEnum)[keyof typeof addressOrderByRelevanceFieldEnum]
 

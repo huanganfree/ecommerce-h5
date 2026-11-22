@@ -398,7 +398,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   order_requests: 'order_requests',
-  users: 'users'
+  users: 'users',
+  address: 'address'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -414,7 +415,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "order_requests" | "users"
+    modelProps: "order_requests" | "users" | "address"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -550,6 +551,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    address: {
+      payload: Prisma.$addressPayload<ExtArgs>
+      fields: Prisma.addressFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.addressFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$addressPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.addressFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$addressPayload>
+        }
+        findFirst: {
+          args: Prisma.addressFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$addressPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.addressFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$addressPayload>
+        }
+        findMany: {
+          args: Prisma.addressFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$addressPayload>[]
+        }
+        create: {
+          args: Prisma.addressCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$addressPayload>
+        }
+        createMany: {
+          args: Prisma.addressCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.addressDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$addressPayload>
+        }
+        update: {
+          args: Prisma.addressUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$addressPayload>
+        }
+        deleteMany: {
+          args: Prisma.addressDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.addressUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.addressUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$addressPayload>
+        }
+        aggregate: {
+          args: Prisma.AddressAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAddress>
+        }
+        groupBy: {
+          args: Prisma.addressGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AddressGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.addressCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AddressCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -617,6 +684,23 @@ export const UsersScalarFieldEnum = {
 export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
 
 
+export const AddressScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  receiver_name: 'receiver_name',
+  receiver_phone: 'receiver_phone',
+  province: 'province',
+  city: 'city',
+  district: 'district',
+  detail: 'detail',
+  is_default: 'is_default',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type AddressScalarFieldEnum = (typeof AddressScalarFieldEnum)[keyof typeof AddressScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -651,6 +735,18 @@ export const usersOrderByRelevanceFieldEnum = {
 } as const
 
 export type usersOrderByRelevanceFieldEnum = (typeof usersOrderByRelevanceFieldEnum)[keyof typeof usersOrderByRelevanceFieldEnum]
+
+
+export const addressOrderByRelevanceFieldEnum = {
+  receiver_name: 'receiver_name',
+  receiver_phone: 'receiver_phone',
+  province: 'province',
+  city: 'city',
+  district: 'district',
+  detail: 'detail'
+} as const
+
+export type addressOrderByRelevanceFieldEnum = (typeof addressOrderByRelevanceFieldEnum)[keyof typeof addressOrderByRelevanceFieldEnum]
 
 
 
@@ -846,6 +942,7 @@ export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaC
 export type GlobalOmitConfig = {
   order_requests?: Prisma.order_requestsOmit
   users?: Prisma.usersOmit
+  address?: Prisma.addressOmit
 }
 
 /* Types for Logging */

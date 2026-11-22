@@ -49,3 +49,8 @@ export type order_requests = Prisma.order_requestsModel
  * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
  */
 export type users = Prisma.usersModel
+/**
+ * Model address
+ * 
+ */
+export type address = Prisma.addressModel
